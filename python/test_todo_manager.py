@@ -1,4 +1,4 @@
-from main import add_item, delete_item, toggle_complete_item, display_todo_list, display_menu, change_priority
+from main import add_item, delete_item, toggle_complete_item, display_todo_list, display_menu, change_priority, edit_item
 import pytest
 
 #region Unit Tests
@@ -37,6 +37,17 @@ def test_display_todo_list_item_priority(capsys):
     display_todo_list()
     captured = capsys.readouterr()
     assert captured.out == "To Do List\n__________\n\n0: [✓] Vacuum - Urgent\n\n"
+
+def test_edit_item():
+    assert edit_item(0, "Shopping") == "Item Title Changed"
+
+def test_edit_item_invalid_index():
+    assert edit_item(2, "Shopping") == "Not Found"
+
+def test_display_todo_list_edited_item(capsys):
+    display_todo_list()
+    captured = capsys.readouterr()
+    assert captured.out == "To Do List\n__________\n\n0: [✓] Shopping - Urgent\n\n"
 
 def test_delete_item_deleted():
     assert delete_item(0) == "Item Deleted"
