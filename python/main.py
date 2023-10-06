@@ -1,15 +1,17 @@
 todo_items = []
-
+priority = ["Routine", "Elevated", "Urgent"]
 # finish all tests
-# 
-
+# edit function items titles
+# add priority
+# 0 = routine, 1 = elevated, 2 = urgent
 def get_todo_list():
     return todo_items
 
 def add_item(todo_name):
     new_todo_item = {
         "title":todo_name,
-        "is_completed":False
+        "is_completed":False,
+        "priority":0
     }
     todo_items.append(new_todo_item)
 
@@ -39,9 +41,9 @@ def display_todo_list():
     else:
         for index, item in enumerate(todo_items):
             if item["is_completed"]:
-                print(f"{index}: [✓] {item['title']}\n")   
+                print(f"{index}: [✓] {item['title']} - {priority[item['priority']]}\n")   
             else:
-                print(f"{index}: [ ] {item['title']}\n") 
+                print(f"{index}: [ ] {item['title']} - {priority[item['priority']]}\n") 
 
 
 def display_menu(type):
@@ -50,7 +52,8 @@ def display_menu(type):
         print("1. Add New Item")
         print("2. Delete Item")
         print("3. Toggle Item")
-        print("4. Exit Program")
+        print("4. Change Priority")
+        print("5. Exit Program")
         
     pass
 
@@ -66,8 +69,7 @@ def get_menu_input(title, menu_range, error_message):
         print(error_message)
         return False
 
-def get_add_item_input():
-    pass
+
 
 
 def main():
@@ -93,6 +95,13 @@ def main():
             toggle_complete_item(item_index)
             pass
         elif user_input == 4:
+            item_index = int(input("Index of item to be prioritized: "))
+
+            item_priority = get_menu_input("New Priority Level")
+
+            toggle_complete_item(item_index)
+            pass
+        elif user_input == 5:
             print('Exiting Program')
             break
 
