@@ -54,4 +54,4 @@ In this exercise, you will work collaboratively in a team to build a simple To-D
 
 ## Conclusion
 
-This exercise challenges you to collaborate, code, test, and integrate using Git, GitHub, Python, and JavaScript. Through teamwork and TDD, you gain practical experience in version control, coding fundamentals, and writing test cases, setting a solid foundation for your software development journey. By building a To-Do List Manager, you not only learn coding skills but also apply them to solve real-world problems.
+This exercise challenges you to collaborate, code, test, and integrate using Git, GitHub, Python, and JavaScript. Through teamwork and TDD, you gain practical experience in version control, coding fundamentals, and writing test cases, setting a solid foundation for your software development journey. By building a To-Do List Manager, you not only learn coding skills but also apply them to solve real-world problems
