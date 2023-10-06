@@ -7,10 +7,15 @@ function addItem(str) {
   return toDoArray.push({ task: str, completed: false });
 }
 function markComplete(str) {
+  let isFound = false
   for (i = 0; i < toDoArray.length; i++) {
     if (toDoArray[i].task === str) {
       toDoArray[i].completed = true;
+      isFound = true
     }
+  }
+  if (!isFound){
+    console.log('Item not found')
   }
 }
 function deleteItem(str) {
@@ -20,7 +25,13 @@ function deleteItem(str) {
       toBeRemoved = i;
     }
   }
-  toDoArray.splice(toBeRemoved, 1);
+  if (toBeRemoved != null){
+    console.log(`${str} succesfully deleted`) 
+    toDoArray.splice(toBeRemoved, 1); 
+  } else {
+    console.log(`${str} not found`)
+  }
+  
 }
 
 function displayMenu(){
@@ -36,9 +47,21 @@ function displayMenu(){
 displayMenu()
 
 while (true){
+    console.log(toDoArray)
     let userInput = prompt('Enter Menu Number: ');
     if (userInput === '4'){
         break
+    }else if (userInput === '1'){
+        let taskName = prompt('Enter New Task: ')
+        addItem(taskName)
+    }else if (userInput === '2'){
+        let taskName = prompt('What did you complete? ')
+        markComplete(taskName)
+    }else if (userInput === '3'){
+        let taskName = prompt('Enter the task you want to delete FUREVER: ')
+        deleteItem(taskName)
+    }else{
+        console.log("Invalid Input")
     }
 }
 console.log('Bye-Bye!')
