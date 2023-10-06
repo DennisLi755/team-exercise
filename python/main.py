@@ -1,5 +1,8 @@
 todo_items = []
 
+# finish all tests
+# 
+
 def get_todo_list():
     return todo_items
 
@@ -34,11 +37,12 @@ def display_todo_list():
     if len(todo_items) == 0:
         print("No Items\n")
     else:
-        for item in todo_items:
+        for index, item in enumerate(todo_items):
             if item["is_completed"]:
-                print(f"[✓] {item['title']}\n")   
+                print(f"{index}: [✓] {item['title']}\n")   
             else:
-                print(f"[ ] {item['title']}\n") 
+                print(f"{index}: [ ] {item['title']}\n") 
+
 
 def display_menu(type):
     if type == "main_menu":
@@ -91,4 +95,10 @@ def main():
         elif user_input == 4:
             print('Exiting Program')
             break
-main()
+
+
+
+
+
+if __name__ == '__main__':
+    main()
