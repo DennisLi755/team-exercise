@@ -32,6 +32,14 @@ def delete_item(index):
     else:
         return "Not Found"
     
+def edit_item(index,title):   
+    if index < len(todo_items):
+        todo_items[index]['title'] = title
+        return "Item Title Changed"
+    else:
+        return "Not Found"
+
+    
 def toggle_complete_item(index):
     if index < len(todo_items):
         todo_items[index]['is_completed'] = not todo_items[index]['is_completed']
@@ -66,9 +74,9 @@ def display_menu(type):
         print("5. Exit Program")
     elif type == "priority":
         print("Priority Type\n_______\n")
-        print("1. Routine")
-        print("2. Elevated")
-        print("3. Urgent")
+        print("0. Routine")
+        print("1. Elevated")
+        print("2. Urgent")
     pass
 
 def get_menu_input(title, menu_range, error_message):
@@ -84,7 +92,11 @@ def get_menu_input(title, menu_range, error_message):
         return False
 
 
-
+# def convert_input_as_number(user_input):
+#     try:
+#         return int(user_input)
+#     except:
+#         return False
 
 def main():
     while True:
@@ -98,28 +110,41 @@ def main():
         if user_input == 1:
             item_name = input("Name of item: ")
             add_item(item_name)
-            pass
         elif user_input == 2:
             display_todo_list()
             item_index = int(input("Index of item to be deleted: "))
             delete_item(item_index)
-            pass
+            # item_index = convert_input_as_number(input("Index of item to be deleted: "))
+            # if item_index !== False: 
+            #     delete_item(item_index)
+            # else:
+            #     print("Invalid Input: Try again")
+            
         elif user_input == 3:
             item_index = int(input("Index of item to be toggled: "))
             toggle_complete_item(item_index)
-            pass
-        elif user_input == 4:
-            item_index = int(input("Index of item to be prioritized: "))
+            # item_index = convert_input_as_number(input("Index of item to be toggled: "))
+            # if item_index !== False: 
+            #     toggle_complete_item(item_index)
+            # else:
+            #     print("Invalid Input: Try again")
 
+        elif user_input == 4:
+            # item_index = convert_input_as_number(input("Index of item to be prioritized: "))
+            item_index = int(input("Index of item to be prioritized: "))
+            # toggle_complete_item(item_index)
+
+            # if item_index == False: 
+            #     print("Invalid Input: Try again")
+            #     continue
 
             display_menu("priority")
             item_priority_input = False
             while item_priority_input == False:
-                item_priority_input = get_menu_input("New Priority Level",3,"Invalid Input")
+                item_priority_input = get_menu_input("New Priority Level: ",3,"Invalid Input")
 
-            item_priority_input
+            change_priority(item_index,item_priority_input)
 
-            pass
         elif user_input == 5:
             print('Exiting Program')
             break
