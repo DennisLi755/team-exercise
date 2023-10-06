@@ -58,6 +58,6 @@ def test_delete_item_not_found():
 def test_display_menu(capsys):
     display_menu("main_menu")
     captured = capsys.readouterr()
-    assert captured.out == "Menu\n____\n\n1. Add New Item\n2. Delete Item\n3. Toggle Item\n4. Change Priority\n5. Exit Program\n"
+    assert captured.out == "Menu\n____\n\n0. Exit Program\n1. Add New Item\n2. Edit Item\n3. Delete Item\n4. Toggle Item\n5. Change Priority\n"
 
 #endregion
