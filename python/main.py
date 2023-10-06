@@ -30,20 +30,6 @@ def toggle_complete_item(index):
         return "Not Found"
 
 def main():
-    print(get_todo_list())
-    print(add_item("First Item"))
-    print(get_todo_list())
-    print(delete_item(0))
-    print(get_todo_list())
-    print(add_item("First Item 2.0"))
-    print(add_item("Second Item 2.0"))
-    print(add_item("First Item 2.0"))
-    print(add_item("First Item 2.0"))
-    print(get_todo_list())
-    print(toggle_complete_item(0))
-    print(get_todo_list())
-
-
     pass
 
 main()
