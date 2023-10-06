@@ -105,9 +105,5 @@ def main():
             print('Exiting Program')
             break
 
-
-
-
-
 if __name__ == '__main__':
     main()
