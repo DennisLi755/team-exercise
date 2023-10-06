@@ -17,6 +17,14 @@ def add_item(todo_name):
 
     return new_todo_item
 
+def change_priority(index, new_priority):
+    if index < len(todo_items):
+        todo_items[index]['priority'] = new_priority
+        return "Priority Changed"
+    else:
+        return "Not Found"
+
+
 def delete_item(index):   
     if index < len(todo_items):
         todo_items.pop(index)
@@ -46,6 +54,8 @@ def display_todo_list():
                 print(f"{index}: [ ] {item['title']} - {priority[item['priority']]}\n") 
 
 
+
+
 def display_menu(type):
     if type == "main_menu":
         print("Menu\n____\n")
@@ -54,7 +64,11 @@ def display_menu(type):
         print("3. Toggle Item")
         print("4. Change Priority")
         print("5. Exit Program")
-        
+    elif type == "priority":
+        print("Priority Type\n_______\n")
+        print("1. Routine")
+        print("2. Elevated")
+        print("3. Urgent")
     pass
 
 def get_menu_input(title, menu_range, error_message):
@@ -97,9 +111,14 @@ def main():
         elif user_input == 4:
             item_index = int(input("Index of item to be prioritized: "))
 
-            item_priority = get_menu_input("New Priority Level")
 
-            toggle_complete_item(item_index)
+            display_menu("priority")
+            item_priority_input = False
+            while item_priority_input == False:
+                item_priority_input = get_menu_input("New Priority Level",3,"Invalid Input")
+
+            item_priority_input
+
             pass
         elif user_input == 5:
             print('Exiting Program')
