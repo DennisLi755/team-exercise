@@ -1,14 +1,15 @@
-const {addItem,toDoArray} = require("./main");
+const {addItem,toDoArray,markComplete} = require("./main");
 
-// describe("test adding items", () => {
-//     test("addItem('washthedog') === add item washthedog to todo list",() => {
-//         addItem("washthedog")
-//         expect(toDoArray).toContain("washthedog");
-//     })
-// })
-describe("test todolist", () => {
+describe("test add item", () => {
     test("addItem('washthedog') === add item washthedog to todo list",() => {
         addItem("washthedog")
         expect(toDoArray).toContainEqual({task:"washthedog",completed:false});
+    })
+})
+
+describe("test completor", () => {
+    test("markComplete('washthedog') === mark washthedog to completed:true",() => {
+        markComplete("washthedog")
+        expect(toDoArray).toContainEqual({task:"washthedog",completed:true});
     })
 })
