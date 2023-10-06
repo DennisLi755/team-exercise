@@ -9,6 +9,6 @@ const {addItem,toDoArray} = require("./main");
 describe("test todolist", () => {
     test("addItem('washthedog') === add item washthedog to todo list",() => {
         addItem("washthedog")
-        expect(toDoArray).toContain({task:"washthedog",completed:false});
+        expect(toDoArray).toContainEqual({task:"washthedog",completed:false});
     })
 })
