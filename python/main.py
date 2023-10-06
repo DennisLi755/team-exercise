@@ -94,7 +94,7 @@ def main():
 
         user_input = False
         while user_input == False:
-            user_input = get_menu_input("\nSelect Menu Options: ",4,"Invalid Input")
+            user_input = get_menu_input("\nSelect Menu Options: ",5,"Invalid Input")
             
         if user_input == 1:
             item_name = input("Name of item: ")
