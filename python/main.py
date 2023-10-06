@@ -41,19 +41,54 @@ def display_todo_list():
                 print(f"[ ] {item['title']}\n") 
 
 def display_menu(type):
-    if type == "Main Menu":
+    if type == "main_menu":
+        print("Menu\n____\n")
         print("1. Add New Item")
         print("2. Delete Item")
         print("3. Toggle Item")
+        print("4. Exit Program")
         
     pass
 
+def get_menu_input(title, menu_range, error_message):
+    user_input = input(title)
+    try:
+        if int(user_input) < 1 or int(user_input) > menu_range:
+            print(error_message)
+            return False
+        else:
+            return int(user_input)
+    except:
+        print(error_message)
+        return False
+
+def get_add_item_input():
+    pass
 
 
 def main():
     while True:
         display_todo_list()
-        display_menu()
-    
+        display_menu("main_menu")
 
+        user_input = False
+        while user_input == False:
+            user_input = get_menu_input("\nSelect Menu Options: ",4,"Invalid Input")
+            
+        if user_input == 1:
+            item_name = input("Name of item: ")
+            add_item(item_name)
+            pass
+        elif user_input == 2:
+            display_todo_list()
+            item_index = int(input("Index of item to be deleted: "))
+            delete_item(item_index)
+            pass
+        elif user_input == 3:
+            item_index = int(input("Index of item to be toggled: "))
+            toggle_complete_item(item_index)
+            pass
+        elif user_input == 4:
+            print('Exiting Program')
+            break
 main()
