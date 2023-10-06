@@ -1,9 +1,6 @@
 todo_items = []
 priority = ["Routine", "Elevated", "Urgent"]
-# finish all tests
-# edit function items titles
-# add priority
-# 0 = routine, 1 = elevated, 2 = urgent
+
 def get_todo_list():
     return todo_items
 
@@ -14,7 +11,6 @@ def add_item(todo_name):
         "priority":0
     }
     todo_items.append(new_todo_item)
-
     return new_todo_item
 
 def change_priority(index, new_priority):
@@ -62,16 +58,15 @@ def display_todo_list():
                 print(f"{index}: [ ] {item['title']} - {priority[item['priority']]}\n") 
 
 
-
-
 def display_menu(type):
     if type == "main_menu":
         print("Menu\n____\n")
+        print("0. Exit Program")
         print("1. Add New Item")
-        print("2. Delete Item")
-        print("3. Toggle Item")
-        print("4. Change Priority")
-        print("5. Exit Program")
+        print("2. Edit Item")
+        print("3. Delete Item")
+        print("4. Toggle Item")
+        print("5. Change Priority")
     elif type == "priority":
         print("Priority Type\n_______\n")
         print("0. Routine")
@@ -92,12 +87,6 @@ def get_menu_input(title, menu_range, error_message):
         return False
 
 
-# def convert_input_as_number(user_input):
-#     try:
-#         return int(user_input)
-#     except:
-#         return False
-
 def main():
     while True:
         display_todo_list()
@@ -111,33 +100,18 @@ def main():
             item_name = input("Name of item: ")
             add_item(item_name)
         elif user_input == 2:
+            item_index = int(input("Index of item to be edited: "))
+            item_new_name = input("New title for item: ")
+            edit_item(item_index,item_new_name)
+        elif user_input == 3:
             display_todo_list()
             item_index = int(input("Index of item to be deleted: "))
             delete_item(item_index)
-            # item_index = convert_input_as_number(input("Index of item to be deleted: "))
-            # if item_index !== False: 
-            #     delete_item(item_index)
-            # else:
-            #     print("Invalid Input: Try again")
-            
-        elif user_input == 3:
+        elif user_input == 4:
             item_index = int(input("Index of item to be toggled: "))
             toggle_complete_item(item_index)
-            # item_index = convert_input_as_number(input("Index of item to be toggled: "))
-            # if item_index !== False: 
-            #     toggle_complete_item(item_index)
-            # else:
-            #     print("Invalid Input: Try again")
-
-        elif user_input == 4:
-            # item_index = convert_input_as_number(input("Index of item to be prioritized: "))
+        elif user_input == 5:
             item_index = int(input("Index of item to be prioritized: "))
-            # toggle_complete_item(item_index)
-
-            # if item_index == False: 
-            #     print("Invalid Input: Try again")
-            #     continue
-
             display_menu("priority")
             item_priority_input = False
             while item_priority_input == False:
@@ -145,7 +119,7 @@ def main():
 
             change_priority(item_index,item_priority_input)
 
-        elif user_input == 5:
+        elif user_input == 0:
             print('Exiting Program')
             break
 
