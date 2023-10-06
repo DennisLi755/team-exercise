@@ -1,4 +1,7 @@
+const prompt = require('prompt-sync')();
+
 let toDoArray = [];
+
 
 function addItem(str) {
   return toDoArray.push({ task: str, completed: false });
@@ -19,5 +22,25 @@ function deleteItem(str) {
   }
   toDoArray.splice(toBeRemoved, 1);
 }
+
+function displayMenu(){
+    console.log("To-Do Later...Maybe");
+    console.log("(>^.^(>");
+    console.log("What would you like to do right meow?")
+    console.log("1. Add Task")
+    console.log("2. Mark Complete")
+    console.log("3. Delete Task")
+    console.log("4. Quit Program")
+}
+
+displayMenu()
+
+while (true){
+    let userInput = prompt('Enter Menu Number: ');
+    if (userInput === '4'){
+        break
+    }
+}
+console.log('Bye-Bye!')
 
 module.exports = { addItem, toDoArray, markComplete, deleteItem };
