@@ -5,4 +5,4 @@ describe("test adding items", () => {
         addItem("washthedog")
         expect(toDoArray[0]).tobe("washthedog");
     })
-}
+})
